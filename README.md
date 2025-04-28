@@ -1,4 +1,4 @@
-#### Finals Lab Task 2
+# Finals Lab Task 2
 
 Convert the ER diagram for student assignment submissions into MySQL tables. Include all the entities and their details, and set up the relationships between students, submissions, and assignments. Identify the primary keys and foreign keys, and handle any dependent or weaker entities correctly.
 
