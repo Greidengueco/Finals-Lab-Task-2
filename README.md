@@ -53,5 +53,7 @@ Convert the ER diagram for student assignment submissions into MySQL tables. Inc
 ![image](https://github.com/user-attachments/assets/201b36ed-50b8-4174-b5e8-ebc4b0b84f15)
 
 # The Basis for the Creation of the Relational Tables:
-![picture](https://github.com/Zomue/Zomue.github.io/blob/main/Image/creation%20of%20relational%20tbl.png)
+![image](https://github.com/user-attachments/assets/7c65ff3b-2023-4803-b77e-52299d1a480e)
 
+
+## [BACK TO PORTFOLIO](https://greidengueco.github.io/EDM-Portfolio/)
