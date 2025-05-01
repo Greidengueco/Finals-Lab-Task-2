@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finals Lab Task 2 - Student Assignment Submissions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      background: black;
+      color: #00f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body {
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    .content {
+      width: 100%;
+      max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00f0ff;
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+      position: relative;
+      z-index: 2;
+      animation: floating 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+      overflow: hidden;  /* Hide scrollbars */
+      overflow-y: scroll;  /* Allow vertical scroll */
+      max-height: 85vh;  /* Max height for scrolling */
+    }
+
+    /* Hide the scrollbar */
+    .container::-webkit-scrollbar {
+      display: none; /* Hides the scrollbar in webkit browsers (Chrome, Safari) */
+    }
+
+    .container {
+      scrollbar-width: none; /* Hides the scrollbar in Firefox */
+    }
+
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      color: #00f0ff;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #00f0ff;
+      padding-bottom: 10px;
+    }
+
+    h2, h3 {
+      margin-top: 20px;
+      color: #ff3c57;
+      font-size: 1.6em;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 80%; /* Smaller images */
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .system-btn {
+      padding: 12px 30px;
+      background: transparent;
+      border: 2px solid #00f0ff;
+      color: #00f0ff;
+      font-size: 1.2rem; /* Slightly larger font size */
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+      transform: scale(1);
+    }
+
+    .system-btn:hover {
+      background-color: #00f0ff;
+      color: black;
+      transform: scale(1.1); /* Zoom effect on hover */
+    }
+
+    .system-btn:active {
+      transform: scale(1.05); /* Slight shrink when clicked */
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <div class="container">
+      <h1>FINAL LAB TASK 2</h1>
+
+      <p style="color: #ff3c57; font-size: 1.3em; text-align: center;">
+        Convert the ER diagram for student assignment submissions into MySQL tables. Include all the entities and their details, and set up the relationships between students, submissions, and assignments. Identify the primary keys and foreign keys, and handle any dependent or weaker entities correctly.
+      </p>
+
+      <h2>Step-by-Step Process</h2>
+
+      <h3>1. Student Table</h3>
+      <ul>
+        <li><b>username</b>: VARCHAR (50 characters), primary key.</li>
+      </ul>
+
+      <h3>2. Assignment Table</h3>
+      <ul>
+        <li><b>shortname</b>: VARCHAR (50 characters), primary key.</li>
+        <li><b>due_date</b>: DATE, not null.</li>
+        <li><b>url</b>: VARCHAR (255 characters), can be null.</li>
+      </ul>
+
+      <h3>3. Submission Table</h3>
+      <ul>
+        <li><b>username</b>: VARCHAR (50 characters), foreign key referencing <b>username</b> in student table.</li>
+        <li><b>shortname</b>: VARCHAR (50 characters), foreign key referencing <b>shortname</b> in assignment table.</li>
+        <li><b>version</b>: INTEGER, represents the version of the submission.</li>
+        <li><b>submit_date</b>: DATE, not null.</li>
+        <li><b>data</b>: TEXT.</li>
+        <li>Composite primary key on <b>username</b>, <b>shortname</b>, and <b>version</b>.</li>
+      </ul>
+
+      <h2>Screenshots</h2>
+
+      <h3>Query Statements</h3>
+      <h4>1. Student Table</h4>
+      <img src="https://github.com/user-attachments/assets/3e80ecc7-5b6e-4a59-80a9-1e2ca3eb43e1" alt="Student Table Query" />
+      <h4>2. Assignment Table</h4>
+      <img src="https://github.com/user-attachments/assets/723bd46a-5b30-4fa0-ae15-795f14d577b2" alt="Assignment Table Query" />
+      <h4>3. Submission Table</h4>
+      <img src="https://github.com/user-attachments/assets/7a731bc6-9a0d-4263-84e1-65efd47a19ca" alt="Submission Table Query" />
+
+      <h3>Table Structure</h3>
+      <h4>1. Student Table</h4>
+      <img src="https://github.com/user-attachments/assets/6da58762-2549-483f-85b8-664a0748727b" alt="Student Table Structure" />
+      <h4>2. Assignment Table</h4>
+      <img src="https://github.com/user-attachments/assets/9b3d9f04-f8f4-4e8b-9f29-31dd000d1b19" alt="Assignment Table Structure" />
+      <h4>3. Submission Table</h4>
+      <img src="https://github.com/user-attachments/assets/8e0ebcfd-9d6e-4ab2-9cf8-abb12eeac60e" alt="Submission Table Structure" />
+
+      <h2>Entity-Relationship Diagram (EER)</h2>
+      <img src="https://github.com/user-attachments/assets/201b36ed-50b8-4174-b5e8-ebc4b0b84f15" alt="EER Diagram" />
+
+      <h2>The Basis for the Creation of the Relational Tables</h2>
+      <img src="https://github.com/user-attachments/assets/7c65ff3b-2023-4803-b77e-52299d1a480e" alt="Relational Tables Basis" />
+
+      <div class="button-row">
+        <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
+        <a href="https://github.com/user-attachments/files/19663244/Gueco.docx" class="system-btn" target="_blank">VIEW ON GITHUB</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
